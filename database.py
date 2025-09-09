@@ -43,10 +43,12 @@ class Database:
             """)
 
             # Payment Methods table
+            self.cursor.execute("DROP TABLE IF EXISTS payment_methods") # Drop to alter
             self.cursor.execute("""
-            CREATE TABLE IF NOT EXISTS payment_methods (
+            CREATE TABLE payment_methods (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL UNIQUE
+                name TEXT NOT NULL UNIQUE,
+                details TEXT NOT NULL
             )
             """)
 
@@ -110,8 +112,12 @@ class Database:
             self.cursor.executemany("INSERT OR IGNORE INTO prices (duration_days, price_bdt, price_usd) VALUES (?, ?, ?)", default_prices)
 
             # Default Payment Methods
-            default_methods = [('bKash',), ('Nagad',), ('USDT',)]
-            self.cursor.executemany("INSERT OR IGNORE INTO payment_methods (name) VALUES (?)", default_methods)
+            default_methods = [
+                ('bKash Personal', '01712345678'),
+                ('Nagad Personal', '01812345678'),
+                ('USDT (TRC20)', 'TXYZ123456789ABCDEFG')
+            ]
+            self.cursor.executemany("INSERT OR IGNORE INTO payment_methods (name, details) VALUES (?, ?)", default_methods)
 
             self.conn.commit()
             logger.info("Default data initialized.")
@@ -296,10 +302,10 @@ class Database:
             logger.error(f"Error removing price for {duration_days} days: {e}")
             self.conn.rollback()
 
-    def add_payment_method(self, name: str):
+    def add_payment_method(self, name: str, details: str):
         """Adds a new payment method."""
         try:
-            self.cursor.execute("INSERT OR IGNORE INTO payment_methods (name) VALUES (?)", (name,))
+            self.cursor.execute("INSERT OR IGNORE INTO payment_methods (name, details) VALUES (?, ?)", (name, details))
             self.conn.commit()
             logger.info(f"Added payment method {name}.")
         except sqlite3.Error as e:

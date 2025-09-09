@@ -1,21 +1,32 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Main menu for regular users
+# Main menu for regular users - 1x1 Layout
 USER_MAIN_MENU_BUTTONS = [
-    [InlineKeyboardButton("💵 BALANCE", callback_data='balance'), InlineKeyboardButton("💰 ADD BALANCE", callback_data='add_balance')],
-    [InlineKeyboardButton("🌐 BUY PROXY", callback_data='buy_proxy'), InlineKeyboardButton("🔍 MY PROXIES", callback_data='my_proxies')],
-    [InlineKeyboardButton("📜 HISTORY", callback_data='history'), InlineKeyboardButton("💳 PAYMENT METHODS", callback_data='payment_methods')],
-    [InlineKeyboardButton("📊 PRICE LIST", callback_data='price_list'), InlineKeyboardButton("❓ HELP", callback_data='help')],
+    [InlineKeyboardButton("💵 BALANCE", callback_data='balance')],
+    [InlineKeyboardButton("💰 ADD BALANCE", callback_data='add_balance')],
+    [InlineKeyboardButton("🌐 BUY PROXY", callback_data='buy_proxy')],
+    [InlineKeyboardButton("🔍 MY PROXIES", callback_data='my_proxies')],
+    [InlineKeyboardButton("📜 HISTORY", callback_data='history')],
+    [InlineKeyboardButton("💳 PAYMENT METHODS", callback_data='payment_methods')],
+    [InlineKeyboardButton("📊 PRICE LIST", callback_data='price_list')],
+    [InlineKeyboardButton("❓ HELP", callback_data='help')],
 ]
 
-# Additional buttons for admins, shown below the user buttons
+# Additional buttons for admins, shown below the user buttons - 1x1 Layout
 ADMIN_MAIN_MENU_BUTTONS = [
-    [InlineKeyboardButton("➕ ADD PRICE 💎", callback_data='admin_add_price'), InlineKeyboardButton("➖ REMOVE PRICE 🗑️", callback_data='admin_remove_price')],
-    [InlineKeyboardButton("💳 ADD PAYMENT ➕", callback_data='admin_add_payment'), InlineKeyboardButton("🗑️ REMOVE PAYMENT ➖", callback_data='admin_remove_payment')],
-    [InlineKeyboardButton("🔧 ASSIGN PROXY 🎯", callback_data='admin_assign_proxy'), InlineKeyboardButton("🔁 CHANGE PROXY 🔄", callback_data='admin_change_proxy')],
-    [InlineKeyboardButton("⏳ PENDING ORDERS ⚠️", callback_data='admin_pending_orders'), InlineKeyboardButton("💱 SET EXCHANGE RATE 💱", callback_data='admin_set_exchange_rate')],
-    [InlineKeyboardButton("➕ ADD PROXY", callback_data='admin_add_proxy'), InlineKeyboardButton("➖ REMOVE PROXY", callback_data='admin_remove_proxy')],
-    [InlineKeyboardButton("🛑 TURN OFF BOT 🔌", callback_data='admin_turn_off_bot'), InlineKeyboardButton("✅ TURN ON BOT ⚡", callback_data='admin_turn_on_bot')],
+    [InlineKeyboardButton("➕ ADD PRICE 💎", callback_data='admin_add_price')],
+    [InlineKeyboardButton("➖ REMOVE PRICE 🗑️", callback_data='admin_remove_price')],
+    [InlineKeyboardButton("💳 ADD PAYMENT ➕", callback_data='admin_add_payment')],
+    [InlineKeyboardButton("🗑️ REMOVE PAYMENT ➖", callback_data='admin_remove_payment')],
+    [InlineKeyboardButton("🔧 ASSIGN PROXY 🎯", callback_data='admin_assign_proxy')],
+    [InlineKeyboardButton("🔁 CHANGE PROXY 🔄", callback_data='admin_change_proxy')],
+    [InlineKeyboardButton("⏳ PENDING ORDERS ⚠️", callback_data='admin_pending_orders')],
+    [InlineKeyboardButton("💱 SET EXCHANGE RATE 💱", callback_data='admin_set_exchange_rate')],
+    [InlineKeyboardButton("➕ ADD PROXY", callback_data='admin_add_proxy')],
+    [InlineKeyboardButton("➖ REMOVE PROXY", callback_data='admin_remove_proxy')],
+    [InlineKeyboardButton("📂 IMPORT PROXIES", callback_data='admin_import_proxies')],
+    [InlineKeyboardButton("🛑 TURN OFF BOT 🔌", callback_data='admin_turn_off_bot')],
+    [InlineKeyboardButton("✅ TURN ON BOT ⚡", callback_data='admin_turn_on_bot')],
 ]
 
 def get_main_menu_keyboard(is_admin=False):
